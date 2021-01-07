@@ -17,3 +17,7 @@ This project would automate the task of thinking of a unique and secure password
 
 # How-To-Run?
 python3 pythonFile.py
+
+# Inspiration
+This Project is inspired by Grant Collins - 
+https://github.com/collinsmc23/cybersec-info-automation-scripts
