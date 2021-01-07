@@ -1,0 +1,118 @@
+# PASSWORD GENERATOR PROGRAM
+def Password_Generator():
+    import os
+    import secrets
+    import string
+
+    def passwordGenerator(passwordLength):
+
+        characters = string.ascii_letters + string.digits
+
+        securePassword = ''.join(secrets.choice(characters) for i in range(passwordLength))
+
+        return securePassword
+
+    def main():
+
+        pathName = '/home/kartik/Desktop/Passwords/To Be Encrypted'
+        
+        fileName = input("ENTER FILE NAME: ")
+
+        fullName = os.path.join(pathName,fileName)
+
+        passwordLength = int(input("ENTER PASSWORD LENGTH: "))
+
+        generatedPassword = passwordGenerator(passwordLength)
+
+        print("GENERATED PASSWORD: ", generatedPassword )
+
+        with open(fullName,'w') as f:
+            f.write("THE PASSWORD FOR " + fileName + " IS GIVEN BELOW: " + '\n' + generatedPassword + '\n')
+        f.close()
+
+    main()
+
+# NEWS FEED PROGRAM
+def News_Feed():
+
+
+    import feedparser
+    import webbrowser
+
+    def main():
+        print('\n' + "CYBER SECURITY NEWS LIST")
+        print("------------------------" + '\n')
+        print("[1]: TheHackerNews")
+        print("[2]: ThreatPost")
+        print("[3]: NakedSecurity")
+
+        website_list = ("https://feeds.feedburner.com/TheHackersNews", "https://threatpost.com/feed", "https://nakedsecurity.sophos.com/feed")
+
+        website_input = int(input('\n' + "ENTER WEBSITE BY NUMBER (1-3): "))
+
+        NewsFeed = feedparser.parse(website_list[website_input - 1])
+        article_list = []
+        article_link = []
+        for i in range(5):
+            article = NewsFeed.entries[i]
+            titles = article.title
+            link = article.link
+            article_link.append(link)
+            article_list.append(titles)
+
+        article_num = 1
+        for article in article_list:
+            print('[{}] {}'.format(str(article_num), article))
+            article_num += 1
+
+        article_link_click = False
+        while not article_link_click:
+            user_click = int(input('\n' + "CHOOSE THE LINK YOU WANT TO OPEN (1-5): "))
+            webbrowser.open(article_link[user_click - 1])
+            article_link_click = True
+
+    main()
+
+
+
+# CVE LIST PROGRAM
+def CVE_List():
+
+    import requests
+    import json
+
+    def main():
+
+        content = requests.get("https://cve.circl.lu/api/last")
+        json = content.json()
+
+        for item in json:
+            print("{} {}\n".format("CVE ID:", item['id']))
+            print("{} {}\n".format("SUMMARY:", item['summary']))
+            print("{} {}\n".format("IMPACT:", item['impact']))
+            print("{} {}\n".format("ACCESS:", item['access']))
+            print("{} {}\n".format("CVSS SCORE:", item['cvss']))
+
+            #The Reason I cannot use CVSS VECTOR IS BECAUSE NOT EVERY CVE HAS CVSS VECTOR
+            #print("{} {}\n".format("CVSS VECTOR:", item['cvss-vector']))
+            
+            print("------------------------------------------------------------------------------------------------------------------------" + '\n')
+
+    main()
+    #print("{} {}\n".format("", item['']))
+
+
+print("\nAUTOMATED CYBER SECURITY LEARNING ")
+print("---------------------------------\n")
+print("[1]: PASSWORD GENERATOR")
+print("[2]: NEWS FEED")
+print("[3]: CVE LIST \n")
+number = int(input("ENTER THE PROGRAM YOU WANT TO RUN: "))
+if(number == 1):
+    Password_Generator()
+elif(number == 2):
+    News_Feed()
+elif(number == 3):
+    CVE_List()
+else:
+    print("INVALID INPUT" + '\n')
