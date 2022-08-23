@@ -10,14 +10,21 @@ These Mini-Projects would allow an individual to generate and store a password f
 
 This project would automate the task of thinking of a unique and secure password for every website, opening a web browser, typing in a URL and looking for the latest articles. This, hence would not only reduce the wastage of time, but would eliminate the tedious job of looking for materials to study and make learning cyber security more fun.
 
-# You-Need-To-Have
+## You-Need-To-Have
 1. Python3
 2. Pip3
 3. Various Python Modules (Which can be installed using pip3)
 
-# How-To-Run?
+## How-To-Run?
 python3 pythonFile.py
 
-# Inspiration
+## Inspiration
 This Project is inspired by Grant Collins - 
 https://github.com/collinsmc23/cybersec-info-automation-scripts
+
+## Contact-Me
+Feel free to Contact Me, I would love to Connect:
+
+Twitter: https://twitter.com/bugverma
+
+LinkedIn: https://www.linkedin.com/in/bugverma/
